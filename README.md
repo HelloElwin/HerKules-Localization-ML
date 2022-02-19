@@ -1,2 +1,2 @@
 # HerKules-Localization-ML
-The ML based localization mathod for RoboMaster-AI.
+The ML-based localization method for RoboMaster-AI.
