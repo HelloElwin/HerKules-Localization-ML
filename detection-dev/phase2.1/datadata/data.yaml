@@ -1,0 +1,5 @@
+train: ../datadata/train/images
+val: ../datadata/valid/images
+
+nc: 3
+names: ['armor_1', 'armor_2', 'light']

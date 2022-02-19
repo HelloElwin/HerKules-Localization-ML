@@ -1,0 +1,8 @@
+prefix=/home/micrl/localization-dev/localization/devel
+
+Name: grabbing
+Description: Description of grabbing
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

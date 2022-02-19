@@ -1,0 +1,2 @@
+grabbing:mapping
+-DCATKIN_DEVEL_PREFIX=/home/micrl/localization-dev/localization/devel -DCMAKE_INSTALL_PREFIX=/home/micrl/localization-dev/localization/install -G Unix Makefiles
