@@ -18,22 +18,15 @@ Our localization pipeline consists of 5 parts:
 * Sending out the coordinates.
 
 
-Now we would like to tell more details by parts.
+In the following are the detailed description.
 
 
-***
+<details close>
+<summary> <b> Image Grabbing </b> </summary>
 
-
-<details open>
-
-<summary> 
-Image Grabbing
-</summary>
 
 We utilize **ROS** to grab real-time color and depth images from the Kinect2 video stream and send them to two callback functions. In the callback functions, we convert the raw image data to numpy arrays before further processing.
 
-<br />
-<br />
 
 We establish a node named "Grabber".
 
@@ -82,9 +75,9 @@ if color_flag == True:
 </details>
 
 
-### Detection
-<details open>
-<summary>(click to view/hide details)</summary>
+<details close>
+<summary> <b> Detection </b> </summary>
+
 
 In this part, we detect the coordinates of the robots and their features.
 
@@ -182,9 +175,8 @@ for robot in robot_results:
 </details>
 
 
-### 3D-Coordinate Computation
-<details open>
-<summary></summary>
+<details close>
+<summary> <b> 3D-Coordinate Computation </b> </summary>
 
 In this part, we need to 
 
@@ -195,10 +187,8 @@ Randomly pick a point, suppose it exists in both the 1080\*1920-sized array and 
 </details>
 
 
-### send
-<details open>
-<summary></summary>
-
+<details close>
+<summary> <b> Send </b> </summary>
 
 
 </details>
