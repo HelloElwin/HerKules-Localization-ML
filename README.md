@@ -25,14 +25,16 @@ Now we would like to tell more details by parts.
 
 
 <details open>
+
 <summary> 
 Image Grabbing
-  
-  </summary>
+</summary>
 
-To achieve a high-speed grabbing, we use **ros subscriber** to receive real-time depth and color image from Kinect2 and send the received images to two callback functions. In the callback functions, we translate the depth and color image data to depth and color numpy array respectively before our further detection and calculation.
+We utilize **ROS** to grab real-time color and depth images from the Kinect2 video stream and send them to two callback functions. In the callback functions, we convert the raw image data to numpy arrays before further processing.
+
 <br />
 <br />
+
 We establish a node named "Grabber".
 
 ```python
@@ -47,20 +49,18 @@ depth_subscriber = ros.Subscriber("/kinect2/sd/image_depth_rect", S_image, self.
 color_subscriber = ros.Subscriber("/kinect2/hd/image_color_rect", S_image, self.colorCallback)
 ```
 
-Since numpy is famous for its high-performance array object, we translate the sensor message Image to one-dimension numpy array in our callback function.
+Then convert the sensor message Image to numpy array for faster matrix computation later.
 
 ```python
 depth = np.frombuffer(depth_msg.data, dtype=np.float32).reshape(424, 512)
 color = np.frombuffer(color_msg.data, dtype=np.uint8).reshape(1080, 1920, 4)
 ```
-  
+
 To guarantee that the depth image and the color image we are dealing with are grabbed from the same time, we set two bool variables to indicate whether we have finished progressing the last frame and are able to progress the next one. 
 
-
 The original value of these two variables are True. When we received one depth image, we translate the sensor message to numpy array and save it in `depth` before we set the `depth_flag` to False. The same is applied to `color_flag`.
-  
 
-After we finished progressing a frame, we set `depth_flag` and `color_flag` back to True.
+When finished processing a frame, we set `depth_flag` and `color_flag` back to True.
   
 ```python
 if depth_flag == True:
@@ -86,10 +86,9 @@ if color_flag == True:
 <details open>
 <summary>(click to view/hide details)</summary>
 
-In this part, we need to detect the coordinates of the robot(s) and its/their feature(s).
-  
-  
-We choose YOLOv5 to detect our objects.
+In this part, we detect the coordinates of the robots and their features.
+
+Temporarily, we choose YOLOv5 to detect our objects for its considerable performance, flexible model size, and complete user guide.
 
 ***  
   
